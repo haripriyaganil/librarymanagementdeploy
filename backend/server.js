@@ -4,7 +4,14 @@ const cors = require("cors");
 const transactionRoutes = require("./routes/transactionRoutes");
 const app = express();
 const wishlistRoutes = require("./routes/wishlistRoutes");
-app.use(cors());
+app.use(cors({ 
+origin: [ 
+"http://localhost:3000", 
+"https://librarymanagementdeploy.vercel.app" 
+], 
+methods: ["GET", "POST", "PUT", "DELETE"], 
+credentials: true 
+}));
 app.use(express.json());
 
 // ROUTES
@@ -21,7 +28,7 @@ app.use("/api/notifications", notificationRoutes);
 app.use("/api/transactions", transactionRoutes);
 
 // DATABASE
-mongoose.connect("mongodb://127.0.0.1:27017/librarymanagementsystem")
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 
