@@ -13,7 +13,9 @@ methods: ["GET", "POST", "PUT", "DELETE"],
 credentials: true 
 }));
 app.use(express.json());
-
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
 // ROUTES
 app.use("/api/wishlist", wishlistRoutes);
 const authRoutes = require("./routes/authRoutes");
