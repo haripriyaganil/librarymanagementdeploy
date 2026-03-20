@@ -11,8 +11,8 @@ function HistoryByCategory() {
     const fetchHistory = async () => {
       try {
         const [transRes, wishRes] = await Promise.all([
-          fetch(`http://localhost:5000/api/transactions/student/${studentId}`).then(res => res.json()),
-          fetch(`http://localhost:5000/api/wishlist/student/${studentId}`).then(res => res.json())
+          fetch(`https://librarymanagementdeploy.onrender.com/api/transactions/student/${studentId}`).then(res => res.json()),
+          fetch(`https://librarymanagementdeploy.onrender.com/api/wishlist/student/${studentId}`).then(res => res.json())
         ]);
 
         const result = {};

@@ -9,7 +9,7 @@ function Home() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/books")
+      .get("https://librarymanagementdeploy.onrender.com/api/books")
       .then((res) => setDbBooks(res.data))
       .catch((err) => console.log("Failed to fetch books: ", err));
   }, []);

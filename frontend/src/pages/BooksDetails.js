@@ -18,7 +18,7 @@ function BooksDetails() {
   // 🔥 FETCH BOOK DETAILS
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/books/${id}`)
+      .get(`https://librarymanagementdeploy.onrender.com/api/books/${id}`)
       .then((res) => {
         setBook(res.data);
         setLoading(false);
@@ -34,7 +34,7 @@ function BooksDetails() {
     if (!userId) return;
 
     axios
-      .get(`http://localhost:5000/api/transactions/student/${userId}`)
+      .get(`https://librarymanagementdeploy.onrender.com/api/transactions/student/${userId}`)
       .then((res) => {
         const active = res.data.find(
           (t) => t.book._id === id && t.status === "issued"
@@ -49,7 +49,7 @@ function BooksDetails() {
   // 🔥 CHECK WISHLIST STATUS
   useEffect(() => {
     if (!userId || !id) return;
-    axios.get(`http://localhost:5000/api/wishlist/student/${userId}`)
+    axios.get(`https://librarymanagementdeploy.onrender.com/api/wishlist/student/${userId}`)
       .then((res) => {
         const inWishlist = res.data.some((w) => w.book._id === id || w.book === id);
         setIsWishlisted(inWishlist);
@@ -66,7 +66,7 @@ function BooksDetails() {
       }
 
       await axios.post(
-        "http://localhost:5000/api/transactions/borrow",
+        "https://librarymanagementdeploy.onrender.com/api/transactions/borrow",
         {
           studentId: userId,
           bookId: id,
@@ -89,13 +89,13 @@ function BooksDetails() {
       const studentId = localStorage.getItem("userId");
 
       if (isWishlisted) {
-        await axios.post("http://localhost:5000/api/wishlist/remove", {
+        await axios.post("https://librarymanagementdeploy.onrender.com/api/wishlist/remove", {
           studentId,
           bookId: book._id
         });
         setIsWishlisted(false);
       } else {
-        await axios.post("http://localhost:5000/api/wishlist/add", {
+        await axios.post("https://librarymanagementdeploy.onrender.com/api/wishlist/add", {
           studentId,
           bookId: book._id
         });

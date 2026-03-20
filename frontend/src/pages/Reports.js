@@ -15,8 +15,8 @@ function Reports() {
     const fetchStats = async () => {
       try {
         const [booksRes] = await Promise.all([
-          axios.get("http://localhost:5000/api/books"),
-          axios.get("http://localhost:5000/api/transactions") // Note: create this route if needed, or query all transactions
+          axios.get("https://librarymanagementdeploy.onrender.com/api/books"),
+          axios.get("https://librarymanagementdeploy.onrender.com/api/transactions") // Note: create this route if needed, or query all transactions
         ]);
 
         const books = booksRes.data;

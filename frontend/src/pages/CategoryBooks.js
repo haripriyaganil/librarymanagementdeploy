@@ -16,7 +16,7 @@ function CategoryBooks() {
     setError(null);
 
     axios
-      .get(`http://localhost:5000/api/books/category/${category}`)
+      .get(`https://librarymanagementdeploy.onrender.com/api/books/category/${category}`)
       .then((res) => {
         setBooks(res.data);
         setLoading(false);

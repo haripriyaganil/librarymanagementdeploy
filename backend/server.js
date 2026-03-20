@@ -38,7 +38,7 @@ app.listen(5000, () => {
   // AUTOMATIC NOTIFICATION GENERATOR
   // Sweeps the database every 1 minute to generate due/overdue notifications.
   setInterval(() => {
-    fetch("http://localhost:5000/api/notifications/trigger-checks", {
+    fetch("http://librarymanagementdeploy.onrender.com/api/notifications/trigger-checks", {
       method: "POST"
     })
       .then(res => res.json())

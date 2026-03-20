@@ -9,7 +9,7 @@ function Notifications() {
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/notifications/user/${studentId}`);
+        const res = await axios.get(`https://librarymanagementdeploy.onrender.com/api/notifications/user/${studentId}`);
         setNotifications(res.data);
       } catch (err) {
         console.log("Error fetching notifications", err);
@@ -21,7 +21,7 @@ function Notifications() {
 
   const markAsRead = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/api/notifications/mark-read/${id}`);
+      await axios.put(`https://librarymanagementdeploy.onrender.com/api/notifications/mark-read/${id}`);
       setNotifications(notifications.map(n => 
         n._id === id ? { ...n, isRead: true } : n
       ));

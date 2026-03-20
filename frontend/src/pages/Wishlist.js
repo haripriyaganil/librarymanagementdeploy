@@ -9,7 +9,7 @@ function Wishlist() {
 
   const fetchWishlist = useCallback(() => {
     axios
-      .get(`http://localhost:5000/api/wishlist/student/${studentId}`)
+      .get(`https://librarymanagementdeploy.onrender.com/api/wishlist/student/${studentId}`)
       .then((res) => setWishlist(res.data))
       .catch((err) => console.log(err));
   }, [studentId]);
@@ -20,7 +20,7 @@ function Wishlist() {
 
   const removeWishlist = async (bookId) => {
     try {
-      await axios.post("http://localhost:5000/api/wishlist/remove", {
+      await axios.post("https://librarymanagementdeploy.onrender.com/api/wishlist/remove", {
         studentId,
         bookId
       });

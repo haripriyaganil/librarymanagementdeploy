@@ -12,7 +12,7 @@ function StudentFines() {
     if (!studentId) return;
 
     axios
-      .get(`http://localhost:5000/api/transactions/student/${studentId}`)
+      .get(`https://librarymanagementdeploy.onrender.com/api/transactions/student/${studentId}`)
       .then((res) => {
         const returned = res.data.filter(
           (t) => t.status === "returned" && t.fine > 0

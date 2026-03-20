@@ -18,7 +18,7 @@ function BookDetails() {
     if (!userId || !book) return;
 
     axios
-      .get(`http://localhost:5000/api/transactions/student/${userId}`)
+      .get(`https://librarymanagementdeploy.onrender.com/api/transactions/student/${userId}`)
       .then((res) => {
         const active = res.data.find(
           (t) => t.book._id === book._id && t.status === "issued"
@@ -31,7 +31,7 @@ function BookDetails() {
   // 🔥 CHECK WISHLIST STATUS
   useEffect(() => {
     if (!userId || !book) return;
-    axios.get(`http://localhost:5000/api/wishlist/student/${userId}`)
+    axios.get(`https://librarymanagementdeploy.onrender.com/api/wishlist/student/${userId}`)
       .then((res) => {
         const inWishlist = res.data.some((w) => w.book._id === book._id || w.book === book._id);
         setIsWishlisted(inWishlist);
@@ -47,7 +47,7 @@ function BookDetails() {
       }
 
       await axios.post(
-        "http://localhost:5000/api/transactions/borrow",
+        "https://librarymanagementdeploy.onrender.com/api/transactions/borrow",
         {
           studentId: userId,
           bookId: book._id,
@@ -66,7 +66,7 @@ function BookDetails() {
   const returnBook = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/transactions/return",
+        "https://librarymanagementdeploy.onrender.com/api/transactions/return",
         {
           transactionId: activeTransaction._id,
         }
@@ -96,13 +96,13 @@ function BookDetails() {
       }
 
       if (isWishlisted) {
-        await axios.post("http://localhost:5000/api/wishlist/remove", {
+        await axios.post("https://librarymanagementdeploy.onrender.com/api/wishlist/remove", {
           studentId: userId,
           bookId: book._id
         });
         setIsWishlisted(false);
       } else {
-        await axios.post("http://localhost:5000/api/wishlist/add", {
+        await axios.post("https://librarymanagementdeploy.onrender.com/api/wishlist/add", {
           studentId: userId,
           bookId: book._id
         });
